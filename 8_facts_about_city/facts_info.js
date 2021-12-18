@@ -6,9 +6,6 @@ extracted from the object's three properties:*/
 
 function cityFacts(obj) {
     let {name, population, continent} = obj;
-    name = obj.name;
-    population = obj.population;
-    continent = obj.continent;
     return `${name} has a population of ${population} and is situated in ${continent};` 
 }
 
