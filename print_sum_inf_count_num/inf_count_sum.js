@@ -1,32 +1,30 @@
 /*Create a function that takes infinite count of elements, operator
 and prints their sum. If there's no operator, then default should be +*/
 
+"use strict"
+
 function printSum(opt, ...num) {
+    let total = 0;
     if(opt === "*") {
-        let total = 1;
+        total = 1;
         num.forEach(function(val) {
             total *= val;
         })
         return total;
     } else if(opt === "-") {
-        let total = 0;
-        num.forEach(function(val) {
-            total -= val;
+        total = num.reduce(function(acc, elem) {
+            return acc - elem;
         })
         return total;
-    }else if(opt == "**") {
-        let total = 1;
-        num.forEach(function(val) {
-            (total *= val) * 2;
-        }) 
-    } else if(typeof opt === "number") {
-        let total = 0;
-        num.forEach(function(val) {
-            total += val;
+    } else if(opt === "**") {
+        total = num.reduce(function(acc, elem) {
+            return acc ** elem;
         })
-        return total;
     } else
-        return 0;
+        total = num.reduce(function(acc, elem) {
+            return acc + elem;
+        }, 1);
+        return total;
 }
 
 console.log(printSum("*", 1, 2, 3)); // 9
